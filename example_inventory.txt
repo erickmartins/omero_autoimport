@@ -1,0 +1,2 @@
+XXX.XXX.XX.XXX, /folder/, SMB_username, Microscope_Name, SMB_version, Is_Lattice
+
