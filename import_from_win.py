@@ -88,6 +88,8 @@ def get_list_files(micro, folder):
 
     command = "find /home/erick/" + micro +"/"+ folder + \
         "/ -type f \( -mmin -43200 -a -mmin +60 \)"
+#    command = "find /home/erick/" + micro +"/"+ folder + \
+#        "/ -type f "
     print(command)
     proc = subprocess.Popen(shlex.split(
         command), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -129,7 +131,7 @@ def import_file(curr_file, username, passw, f, complete, micro):
         '-u ' + username +
         ' --sudo ' + 'root ' +
         '-s ' + 'camdu.warwick.ac.uk ' +
-        '-w ' + passw, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        '-w ' + passw + ' --skip upgrade --exclude=clientPath', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 #    print("after import")
     out, err = proc.communicate()
     f.write(err)
@@ -294,4 +296,4 @@ def from_win(IP, vers, isLattice, micro):
 
 if __name__ == "__main__":
     IP = "137.205.90.190"
-    from_win(IP, 3.0, True,'LLSM')
+    from_win(IP, 3.0)

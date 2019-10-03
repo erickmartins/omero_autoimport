@@ -88,6 +88,8 @@ def get_list_files(micro, folder):
 
     command = "find /home/erick/" + micro +"/"+ folder + \
         "/ -type f \( -mmin -43200 -a -mmin +60 \)"
+#    command = "find /home/erick/" + micro +"/"+ folder + \
+#        "/ -type f"
     print(command)
     proc = subprocess.Popen(shlex.split(
         command), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -272,7 +274,7 @@ def from_lattice(IP, vers, isLattice, micro):
                     copy_file_to_petabyte(curr_file, folder, micro)
 #            # read text file and loop over files importing and moving
             for curr_file in files:
-                if (currfile.endswith("sld")):
+                if (not curr_file.endswith("txt")):
                     move_file(curr_file, folder, micro)
                 
 

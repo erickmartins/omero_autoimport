@@ -125,7 +125,7 @@ def import_file(curr_file, username, passw, f, complete, micro):
         '-u ' + username +
         ' --sudo ' + 'root ' +
         '-s ' + 'camdu.warwick.ac.uk ' +
-        '-w ' + passw, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        '-w ' + passw + ' --skip upgrade --exclude=clientPath', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 #    print("after import")
     out, err = proc.communicate()
     f.write(err)
@@ -284,4 +284,4 @@ def from_dvs(IP, vers, micro):
 
 if __name__ == "__main__":
     IP = "192.168.10.122"
-    from_dvs(IP, '1.0', 'test')
+    from_dvs(IP)
